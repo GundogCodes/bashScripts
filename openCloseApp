@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Your two home Wi-Fi network name
-home_network1="yourHomeWifiName""
+home_network1="<yourHomeWifiName>""
 
 # The app path (adjust if necessary)
-app_path="/Applications/nameOfTheAppYouWantToOpen"
+app_path="/Applications/<nameOfTheAppYouWantToOpen>"
 
 # Get the current SSID
 current_ssid=$(networksetup -getairportnetwork en0 | awk -F ": " '{print $2}')
@@ -14,14 +14,14 @@ if [[ "$current_ssid" == "$home_network1" ]]; then
     # If at home, open your desired app
     if ! pgrep -x "NAMEOFYOURAPP" > /dev/null; then
         open "$app_path"
-        echo "Opening DisplayLink Manager..."
+        echo "Opening App..."
     else
-        echo "DisplayLink Manager is already running."
+        echo "App is already running."
     fi
 else
-    # If not at home, close DisplayLink Manager app
-    if pgrep -x "DisplayLink Manager" > /dev/null; then
-        pkill -x "DisplayLink Manager"
+    # If not at home, close  app
+    if pgrep -x "NAMEOFYOURAPP" > /dev/null; then
+        pkill -x "NAMEOFYOURAPP"
         echo "Closing DisplayLink Manager..."
     else
         echo "DisplayLink Manager is not running."
