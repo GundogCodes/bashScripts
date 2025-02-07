@@ -15,11 +15,16 @@ A script that automatically **opens** a desired application when your computer c
    - Replace `"<yourHomeWifi>"` with your WiFi network name.  
    - Replace `"NAMEOFYOURAPP"` with the application's name.  
 
-2. **Schedule the script to run every 5 minutes using `crontab`:**  
+2. **Exit script***
+   - make the script executable
+ ```
+ chmod +x openCloseApp
+ ```  
+3. **Schedule the script to run every 5 minutes using `crontab`:**  
    Open a terminal and type:  
    ```bash
    crontab -e
   ### Then add the following line:
     */5 * * * * /path/to/your/folder/openCloseApp
-3. Save and exit the edior and your Done!
+4. Save and exit the edior and your Done!
    
