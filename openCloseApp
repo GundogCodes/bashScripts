@@ -22,8 +22,8 @@ else
     # If not at home, close  app
     if pgrep -x "NAMEOFYOURAPP" > /dev/null; then
         pkill -x "NAMEOFYOURAPP"
-        echo "Closing DisplayLink Manager..."
+        echo "Closing App..."
     else
-        echo "DisplayLink Manager is not running."
+        echo "App is not running."
     fi
 fi
