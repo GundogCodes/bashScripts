@@ -22,9 +22,12 @@ A script that automatically **opens** a desired application when your computer c
  ```  
 3. **Schedule the script to run every 5 minutes using `crontab`:**  
    Open a terminal and type:  
-   ```bash
-   crontab -e
+```
+crontab -e
+```
   ### Then add the following line:
+  ```
     */5 * * * * /path/to/your/folder/openCloseApp
+  ```
 4. Save and exit the edior and your Done!
    
