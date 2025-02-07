@@ -21,7 +21,7 @@ A script that automatically **opens** a desired application when your computer c
  chmod +x openCloseApp
  ```  
 3. **Schedule the script to run every 5 minutes using `crontab`:**  
-   Open a terminal and type:  
+   - open a terminal and type:  
 ```
 crontab -e
 ```
