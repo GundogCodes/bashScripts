@@ -1,29 +1,26 @@
+
 #!/bin/bash
 
-# Your two home Wi-Fi network name
-home_network1="<yourHomeWifiName>""
+# Your known Wi-Fi MAC addresses (replace with your actual network MAC addresses)
 
-# The app path (adjust if necessary)
-app_path="/Applications/<nameOfTheAppYouWantToOpen>"
+HOME_MAC_1="xx:xx:xx:xx:xx:xx"  # Replace with Wi-Fi Address found in your wifi settings
 
-# Get the current SSID
-current_ssid=$(networksetup -getairportnetwork en0 | awk -F ": " '{print $2}')
 
-# Check if you're connected to either of the two home networks
-if [[ "$current_ssid" == "$home_network1" ]]; then
-    # If at home, open your desired app
-    if ! pgrep -x "NAMEOFYOURAPP" > /dev/null; then
-        open "$app_path"
-        echo "Opening App..."
-    else
-        echo "App is already running."
-    fi
+# Define the MAC addresses of your home Wi-Fi networks
+# Get the current Wi-Fi MAC address
+
+current_mac=$(ifconfig en0 | awk '/ether/{print $2}')
+
+echo "Current MAC address: $current_mac"
+
+# Check if connected to home Wi-Fi
+if [[ "$current_mac" == "$HOME_MAC_1" ]]; then
+    echo "Connected to home Wi-Fi. Ensuring App is running..."
+    open /Applications/##<PATHTOYOURAPP>##\ ##<YOUR APP NAME HERE>##
 else
-    # If not at home, close  app
-    if pgrep -x "NAMEOFYOURAPP" > /dev/null; then
-        pkill -x "NAMEOFYOURAPP"
-        echo "Closing App..."
-    else
-        echo "App is not running."
-    fi
+    echo "Not connected to home Wi-Fi. Ensuring App is closed..."
+    osascript -e 'quit app "##<YOUR APP NAME HERE>##"'
 fi
+
+
+
